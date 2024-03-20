@@ -1,4 +1,4 @@
-export default [
+const questions = [
   {
     question: "What does HTML stand for?",
     options: [
@@ -20,3 +20,6 @@ export default [
     correctOption: 3,
   },
 ];
+
+export default questions;
+export const numQuestions = questions.length;

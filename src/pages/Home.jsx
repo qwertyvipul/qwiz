@@ -6,7 +6,7 @@ export default function Home() {
     <>
       <h3>Welcome to Qwiz</h3>
       <Link to="/quiz">
-        <button>Take a Quiz</button>
+        <button className="btn-secondary-outline">Take a Quiz</button>
       </Link>
     </>
   );

@@ -17,8 +17,6 @@ export default function RadioInput({
     }
   }
 
-  console.log({ background });
-
   return (
     <label htmlFor={option} className="paper-radio">
       <input type="radio" name={name} id={option} value={index} />

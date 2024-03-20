@@ -7,6 +7,7 @@ export default function Question({
   attempt,
   onSubmit,
   onNext,
+  timeString,
 }) {
   const [selected, setSelected] = useState(-1);
   const question = questions[questionNumber];
@@ -40,7 +41,7 @@ export default function Question({
         </fieldset>
         <div className="row flex-edges flex-middle">
           <div className="sm-4 col">
-            <span className="badge secondary">0:08</span>
+            <span className="badge secondary">{timeString}</span>
           </div>
           <div className="sm-4 col">
             {!attempt ? (
@@ -51,7 +52,12 @@ export default function Question({
                 Submit
               </button>
             ) : (
-              <button onClick={() => onNext()}>Next</button>
+              <button
+                className="btn-secondary-outline"
+                onClick={() => onNext()}
+              >
+                Next
+              </button>
             )}
           </div>
         </div>

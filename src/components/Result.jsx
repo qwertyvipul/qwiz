@@ -1,7 +1,7 @@
 import React from "react";
 import questions from "../data/questions";
 
-export default function Result({ answers, onReset }) {
+export default function Result({ answers, onReset, timeString }) {
   let score = 0;
   answers.forEach((answer, index) => {
     if (questions[index].correctOption === answer) {
@@ -15,8 +15,10 @@ export default function Result({ answers, onReset }) {
         {score} of {questions.length}
       </p>
       <h3>Time spent:</h3>
-      <p>4:!4</p>
-      <button onClick={() => onReset()}>Try Again</button>
+      <p>{timeString}</p>
+      <button className="btn-secondary-outline" onClick={() => onReset()}>
+        Try Again
+      </button>
     </div>
   );
 }
