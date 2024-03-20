@@ -1,5 +1,6 @@
 import React from "react";
 import questions from "../data/questions";
+import { Link } from "react-router-dom";
 
 export default function Result({ answers, onReset, timeString }) {
   let score = 0;
@@ -16,9 +17,22 @@ export default function Result({ answers, onReset, timeString }) {
       </p>
       <h3>Time spent:</h3>
       <p>{timeString}</p>
-      <button className="btn-secondary-outline" onClick={() => onReset()}>
-        Try Again
-      </button>
+
+      <div>
+        <Link to="/">
+          <button className="btn-secondary-outline" onClick={() => onReset()}>
+            Go To Home
+          </button>
+        </Link>
+      </div>
+
+      <div>
+        <Link to="/quiz">
+          <button className="btn-secondary-outline" onClick={() => onReset()}>
+            Try Again
+          </button>
+        </Link>
+      </div>
     </div>
   );
 }
