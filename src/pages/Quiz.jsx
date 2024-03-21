@@ -1,6 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import { numQuestions } from "../data/questions";
-import Result from "../components/Result";
+import React, { useState, useCallback } from "react";
 import { getTimeString } from "../utils/time";
 import QuizProgress from "../components/QuizProgress";
 import QuizEnd from "../components/QuizEnd";
@@ -40,6 +38,8 @@ export default function Quiz() {
             timeString={getTimeString(seconds)}
           />
         );
+      }
+      default: {
       }
     }
   })();

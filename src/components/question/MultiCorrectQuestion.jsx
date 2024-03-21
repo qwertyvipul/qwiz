@@ -19,7 +19,7 @@ export default function MultiCorrectQuestion({
         if (isChecked) {
           onAnswer([...answer, index]);
         } else {
-          onAnswer(answer.filter((ans) => ans != index));
+          onAnswer(answer.filter((ans) => ans !== index));
         }
       }
     }
