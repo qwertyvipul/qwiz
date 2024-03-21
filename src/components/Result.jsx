@@ -30,7 +30,7 @@ export default function Result({ answers, onReset, timeString }) {
   });
   return (
     <div>
-      <h3>Result:</h3>
+      <h3>Score:</h3>
       <p>
         {score} of {questions.length}
       </p>
