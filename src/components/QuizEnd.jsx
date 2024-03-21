@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Result from "./Result";
 import Review from "./Review";
 
-export default function QuizEnd({ answers, handleReset, timeString }) {
+export default function QuizEnd({ answers, onReset, timeString }) {
   const [showResult, setShowResult] = useState(true);
   return (
     <>
@@ -22,14 +22,10 @@ export default function QuizEnd({ answers, handleReset, timeString }) {
       </div>
       <div>
         <div style={showResult ? {} : { display: "none" }}>
-          <Result
-            answers={answers}
-            onReset={handleReset}
-            timeString={timeString}
-          />
+          <Result answers={answers} onReset={onReset} timeString={timeString} />
         </div>
         <di style={!showResult ? {} : { display: "none" }}>
-          <Review />
+          <Review answers={answers} />
         </di>
       </div>
     </>
