@@ -19,7 +19,13 @@ export default function RadioInput({
 
   return (
     <label htmlFor={option} className="paper-radio">
-      <input type="radio" name={name} id={option} value={index} />
+      <input
+        type="radio"
+        name={name}
+        id={option}
+        value={index}
+        checked={isSelected}
+      />
       <span className={background}>{option}</span>
     </label>
   );
