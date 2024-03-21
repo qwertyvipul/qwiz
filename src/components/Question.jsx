@@ -1,39 +1,41 @@
 import React, { useState } from "react";
-import RadioInput from "./RadioInput";
+
 import questions from "../data/questions";
+import SingleCorrectQuestion from "./SingleCorrectQuestion";
+import { QUESTION_TYPES } from "../data/questions";
 
 export default function Question({
   questionNumber,
   attempt,
-  onSelect,
-  selected,
+  onAnswer,
+  answer,
 }) {
   const question = questions[questionNumber];
   const handleSelection = (e) => {
     if (attempt) {
       e.preventDefault();
     } else {
-      onSelect(Number(e.target.value));
+      onAnswer(Number(e.target.value));
     }
   };
 
   return (
     <>
       <div style={{ textAlign: "left" }}>
-        <fieldset className="form-group" onChange={handleSelection}>
-          <legend>{question.question}</legend>
-          {question.options.map((option, index) => (
-            <RadioInput
-              name={question.question}
-              index={index}
-              option={option}
-              key={index}
-              isCorrect={question.correctOption === index}
-              isSelected={selected === index}
-              attempt={attempt}
-            />
-          ))}
-        </fieldset>
+        {(() => {
+          switch (question.type) {
+            case QUESTION_TYPES.SINGLE_CORRECT: {
+              return (
+                <SingleCorrectQuestion
+                  question={question}
+                  selected={answer}
+                  attempt={attempt}
+                  onSelect={handleSelection}
+                />
+              );
+            }
+          }
+        })()}
       </div>
     </>
   );

@@ -8,6 +8,7 @@ export default function RadioInput({
   isSelected,
   attempt,
 }) {
+  console.log({ isSelected, isCorrect });
   let background = "";
   if (attempt) {
     if (isCorrect) {

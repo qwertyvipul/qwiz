@@ -16,7 +16,7 @@ export default function Review({ answers }) {
               questionNumber={index}
               attempt={true}
               onSelect={() => {}}
-              selected={answer}
+              answer={answer}
             />
           </>
         );

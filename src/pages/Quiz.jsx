@@ -26,7 +26,7 @@ export default function Quiz() {
         return (
           <QuizProgress
             answers={answers}
-            onAnswer={(answer) => setAnswers([...answers, answer])}
+            addAnswer={(answer) => setAnswers([...answers, answer])}
             onQuizEnd={handleQuizEnd}
             onTick={(seconds) => setSeconds(seconds)}
           />

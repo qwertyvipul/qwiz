@@ -3,9 +3,14 @@ import questions from "../data/questions";
 import Question from "./Question";
 import Timer from "./Timer";
 
-export default function QuizProgress({ answers, onAnswer, onQuizEnd, onTick }) {
+export default function QuizProgress({
+  answers,
+  addAnswer,
+  onQuizEnd,
+  onTick,
+}) {
   const [questionNumber, setQuestionNumber] = useState(0);
-  const [selected, setSelected] = useState(-1);
+  const [answer, setAnswer] = useState(null);
 
   const onNext = () => {
     const nextQuestionNumber = questionNumber + 1;
@@ -13,7 +18,7 @@ export default function QuizProgress({ answers, onAnswer, onQuizEnd, onTick }) {
       onQuizEnd();
     } else {
       setQuestionNumber(nextQuestionNumber);
-      setSelected(-1);
+      setAnswer(null);
     }
   };
 
@@ -27,8 +32,8 @@ export default function QuizProgress({ answers, onAnswer, onQuizEnd, onTick }) {
         key={questionNumber}
         questionNumber={questionNumber}
         attempt={attempt}
-        onSelect={(selected) => setSelected(selected)}
-        selected={selected}
+        onAnswer={(answer) => setAnswer(answer)}
+        answer={answer}
       />
       <div className="row flex-edges flex-middle">
         <div className="sm-4 col">
@@ -36,7 +41,10 @@ export default function QuizProgress({ answers, onAnswer, onQuizEnd, onTick }) {
         </div>
         <div className="sm-4 col">
           {!attempt ? (
-            <button onClick={(e) => onAnswer(selected)} disabled={selected < 0}>
+            <button
+              onClick={() => addAnswer(answer)}
+              disabled={answer === null}
+            >
               Submit
             </button>
           ) : (
