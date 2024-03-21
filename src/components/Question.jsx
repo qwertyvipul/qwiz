@@ -5,25 +5,20 @@ import questions from "../data/questions";
 export default function Question({
   questionNumber,
   attempt,
-  onSubmit,
-  onNext,
-  timeString,
+  onSelect,
+  selected,
 }) {
-  const [selected, setSelected] = useState(-1);
   const question = questions[questionNumber];
   const handleSelection = (e) => {
     if (attempt) {
       e.preventDefault();
     } else {
-      setSelected(Number(e.target.value));
+      onSelect(Number(e.target.value));
     }
   };
 
   return (
     <>
-      <h4>
-        Question {questionNumber + 1} of {questions.length}:
-      </h4>
       <div style={{ textAlign: "left" }}>
         <fieldset className="form-group" onChange={handleSelection}>
           <legend>{question.question}</legend>
@@ -39,28 +34,6 @@ export default function Question({
             />
           ))}
         </fieldset>
-        <div className="row flex-edges flex-middle">
-          <div className="sm-4 col">
-            <span className="badge secondary">{timeString}</span>
-          </div>
-          <div className="sm-4 col">
-            {!attempt ? (
-              <button
-                onClick={(e) => onSubmit(selected)}
-                disabled={selected < 0}
-              >
-                Submit
-              </button>
-            ) : (
-              <button
-                className="btn-secondary-outline"
-                onClick={() => onNext()}
-              >
-                Next
-              </button>
-            )}
-          </div>
-        </div>
       </div>
     </>
   );

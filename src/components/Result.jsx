@@ -19,14 +19,6 @@ export default function Result({ answers, onReset, timeString }) {
       <p>{timeString}</p>
 
       <div>
-        <Link to="/">
-          <button className="btn-secondary-outline" onClick={() => onReset()}>
-            Go To Home
-          </button>
-        </Link>
-      </div>
-
-      <div>
         <Link to="/quiz">
           <button className="btn-secondary-outline" onClick={() => onReset()}>
             Try Again
