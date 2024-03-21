@@ -1,21 +1,15 @@
+import React, { useState } from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Container from "./components/Container";
-import Home from "./pages/Home";
-import Quiz from "./pages/Quiz";
+import Home from "./components/Home";
+import Quiz from "./components/Quiz";
 
 function App() {
+  const [takeQuiz, setTakeQuiz] = useState(false);
   return (
-    <div className="App padding-small">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Container />}>
-            <Route index element={<Home />} />
-            <Route path="/quiz" element={<Quiz />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <Container>
+      {takeQuiz ? <Quiz /> : <Home onQuizStart={() => setTakeQuiz(true)} />}
+    </Container>
   );
 }
 

@@ -1,6 +1,5 @@
 import React from "react";
 import questions from "../data/questions";
-import { Link } from "react-router-dom";
 import { QUESTION_TYPES } from "../data/questions";
 
 export default function Result({ answers, onReset, timeString }) {
@@ -39,11 +38,9 @@ export default function Result({ answers, onReset, timeString }) {
       <p>{timeString}</p>
 
       <div>
-        <Link to="/quiz">
-          <button className="btn-secondary-outline" onClick={() => onReset()}>
-            Try Again
-          </button>
-        </Link>
+        <button className="btn-secondary-outline" onClick={() => onReset()}>
+          Try Again
+        </button>
       </div>
     </div>
   );

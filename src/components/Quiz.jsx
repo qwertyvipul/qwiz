@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from "react";
 import { getTimeString } from "../utils/time";
-import QuizProgress from "../components/QuizProgress";
-import QuizEnd from "../components/QuizEnd";
+import QuizProgress from "./QuizProgress";
+import QuizEnd from "./QuizEnd";
 
 export default function Quiz() {
   const [answers, setAnswers] = useState([]);
