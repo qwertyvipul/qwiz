@@ -8,6 +8,9 @@ export default function Review({ answers }) {
       {answers.map((answer, index) => {
         return (
           <>
+            <h4>
+              Question {index + 1} of {questions.length}:
+            </h4>
             <Question
               key={index}
               questionNumber={index}
