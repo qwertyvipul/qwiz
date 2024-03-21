@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import questions from "../data/questions";
 import Question from "./question/Question";
 import Timer from "./Timer";

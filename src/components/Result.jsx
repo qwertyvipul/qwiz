@@ -1,12 +1,32 @@
 import React from "react";
 import questions from "../data/questions";
 import { Link } from "react-router-dom";
+import { QUESTION_TYPES } from "../data/questions";
 
 export default function Result({ answers, onReset, timeString }) {
   let score = 0;
   answers.forEach((answer, index) => {
-    if (questions[index].correctOption === answer) {
-      score++;
+    const question = questions[index];
+    switch (question.type) {
+      case QUESTION_TYPES.SINGLE_CORRECT: {
+        if (questions[index].correctOption === answer) {
+          score++;
+        }
+        break;
+      }
+      case QUESTION_TYPES.MULTI_CORRECT: {
+        let correct = answer?.length === question.correctOptions.length;
+        const correctOptions = new Set(question.correctOptions);
+        for (const ans of answer) {
+          correct &= correctOptions.has(ans);
+        }
+        if (correct) {
+          score++;
+        }
+        break;
+      }
+      default: {
+      }
     }
   });
   return (

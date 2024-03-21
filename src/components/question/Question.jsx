@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import questions from "../../data/questions";
 import SingleCorrectQuestion from "./SingleCorrectQuestion";
@@ -37,6 +37,8 @@ export default function Question({
                   onAnswer={onAnswer}
                 />
               );
+            }
+            default: {
             }
           }
         })()}
