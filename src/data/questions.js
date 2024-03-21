@@ -4,11 +4,12 @@ export const QUESTION_TYPES = {
 };
 
 const questions = [
-  // {
-  //   type: QUESTION_TYPES.MULTI_CORRECT,
-  //   question: "Which of these are inline tags?",
-  //   options: ["br", "span", "div", "p"],
-  // },
+  {
+    type: QUESTION_TYPES.MULTI_CORRECT,
+    question: "Which of these are inline tags?",
+    options: ["br", "span", "div", "p"],
+    correctOptions: [0, 1],
+  },
   {
     type: QUESTION_TYPES.SINGLE_CORRECT,
     question: "What does HTML stand for?",

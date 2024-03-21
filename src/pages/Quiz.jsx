@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { numQuestions } from "../data/questions";
 import Result from "../components/Result";
 import { getTimeString } from "../utils/time";
@@ -10,15 +10,15 @@ export default function Quiz() {
   const [seconds, setSeconds] = useState(0);
   const [inProgress, setInProgress] = useState(true);
 
-  const handleReset = () => {
+  const handleReset = useCallback(() => {
     setAnswers([]);
     setSeconds(0);
     setInProgress(true);
-  };
+  }, []);
 
-  const handleQuizEnd = () => {
+  const handleQuizEnd = useCallback(() => {
     setInProgress(false);
-  };
+  }, []);
 
   const element = (() => {
     switch (inProgress) {

@@ -24,9 +24,9 @@ export default function QuizEnd({ answers, onReset, timeString }) {
         <div style={showResult ? {} : { display: "none" }}>
           <Result answers={answers} onReset={onReset} timeString={timeString} />
         </div>
-        <di style={!showResult ? {} : { display: "none" }}>
+        <div style={!showResult ? {} : { display: "none" }}>
           <Review answers={answers} />
-        </di>
+        </div>
       </div>
     </>
   );

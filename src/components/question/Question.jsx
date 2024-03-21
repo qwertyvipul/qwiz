@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 
-import questions from "../data/questions";
+import questions from "../../data/questions";
 import SingleCorrectQuestion from "./SingleCorrectQuestion";
-import { QUESTION_TYPES } from "../data/questions";
+import { QUESTION_TYPES } from "../../data/questions";
+import MultiCorrectQuestion from "./MultiCorrectQuestion";
 
 export default function Question({
   questionNumber,
@@ -11,13 +12,6 @@ export default function Question({
   answer,
 }) {
   const question = questions[questionNumber];
-  const handleSelection = (e) => {
-    if (attempt) {
-      e.preventDefault();
-    } else {
-      onAnswer(Number(e.target.value));
-    }
-  };
 
   return (
     <>
@@ -28,9 +22,19 @@ export default function Question({
               return (
                 <SingleCorrectQuestion
                   question={question}
-                  selected={answer}
+                  answer={answer}
                   attempt={attempt}
-                  onSelect={handleSelection}
+                  onAnswer={onAnswer}
+                />
+              );
+            }
+            case QUESTION_TYPES.MULTI_CORRECT: {
+              return (
+                <MultiCorrectQuestion
+                  question={question}
+                  answer={answer}
+                  attempt={attempt}
+                  onAnswer={onAnswer}
                 />
               );
             }

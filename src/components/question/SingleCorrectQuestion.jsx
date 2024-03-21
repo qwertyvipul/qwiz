@@ -1,15 +1,23 @@
 import React from "react";
-import RadioInput from "./RadioInput";
+import RadioInput from "../input/RadioInput";
 
 export default function SingleCorrectQuestion({
   question,
-  selected,
+  answer,
   attempt,
-  onSelect,
+  onAnswer,
 }) {
+  const handleChange = (e) => {
+    if (!attempt) {
+      onAnswer(Number(e.target.value));
+    } else {
+      e.preventDefault();
+    }
+  };
+
   return (
     <div>
-      <fieldset className="form-group" onChange={onSelect}>
+      <fieldset className="form-group">
         <legend>{question.question}</legend>
         {question.options.map((option, index) => (
           <RadioInput
@@ -18,8 +26,9 @@ export default function SingleCorrectQuestion({
             option={option}
             key={index}
             isCorrect={question.correctOption === index}
-            isSelected={selected === index}
+            isSelected={answer === index}
             attempt={attempt}
+            onChange={handleChange}
           />
         ))}
       </fieldset>

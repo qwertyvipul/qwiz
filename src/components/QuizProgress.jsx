@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import questions from "../data/questions";
-import Question from "./Question";
+import Question from "./question/Question";
 import Timer from "./Timer";
 
 export default function QuizProgress({
