@@ -13,6 +13,7 @@ export default function QuizProgress({ answers, onAnswer, onQuizEnd, onTick }) {
       onQuizEnd();
     } else {
       setQuestionNumber(nextQuestionNumber);
+      setSelected(-1);
     }
   };
 
