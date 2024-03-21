@@ -1,5 +1,5 @@
 import React from "react";
-import Question from "./Question";
+import Question from "./question/Question";
 import questions from "../data/questions";
 
 export default function Review({ answers }) {
@@ -7,7 +7,7 @@ export default function Review({ answers }) {
     <div>
       {answers.map((answer, index) => {
         return (
-          <>
+          <div key={index}>
             <h4>
               Question {index + 1} of {questions.length}:
             </h4>
@@ -16,9 +16,9 @@ export default function Review({ answers }) {
               questionNumber={index}
               attempt={true}
               onSelect={() => {}}
-              selected={answer}
+              answer={answer}
             />
-          </>
+          </div>
         );
       })}
     </div>

@@ -4,19 +4,17 @@ import { getTimeString } from "../utils/time";
 function Timer({ onTick }) {
   const [seconds, setSeconds] = useState(0);
   useEffect(() => {
-    const interval = setInterval(
-      () =>
-        setSeconds((prev) => {
-          const next = prev + 1;
-          onTick(next);
-          return next;
-        }),
-      1000
-    );
+    const interval = setInterval(() => {
+      setSeconds((prev) => prev + 1);
+    }, 1000);
     return () => {
       clearInterval(interval);
     };
   }, []);
+
+  useEffect(() => {
+    onTick(seconds);
+  });
   return <span className="badge secondary">{getTimeString(seconds)}</span>;
 }
 

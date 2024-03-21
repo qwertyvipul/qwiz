@@ -7,6 +7,7 @@ export default function RadioInput({
   isCorrect,
   isSelected,
   attempt,
+  onChange,
 }) {
   let background = "";
   if (attempt) {
@@ -25,6 +26,7 @@ export default function RadioInput({
         id={option}
         value={index}
         checked={isSelected}
+        onChange={onChange}
       />
       <span className={background}>{option}</span>
     </label>
