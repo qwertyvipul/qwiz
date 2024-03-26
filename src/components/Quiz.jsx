@@ -1,16 +1,16 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useRef } from "react";
 import { getTimeString } from "../utils/time";
 import QuizProgress from "./QuizProgress";
 import QuizEnd from "./QuizEnd";
 
 export default function Quiz() {
   const [answers, setAnswers] = useState([]);
-  const [seconds, setSeconds] = useState(0);
+  const timeRef = useRef(null);
   const [inProgress, setInProgress] = useState(true);
 
   const handleReset = useCallback(() => {
     setAnswers([]);
-    setSeconds(0);
+    timeRef.current = null;
     setInProgress(true);
   }, []);
 
@@ -26,7 +26,9 @@ export default function Quiz() {
             answers={answers}
             addAnswer={(answer) => setAnswers([...answers, answer])}
             onQuizEnd={handleQuizEnd}
-            onTick={(seconds) => setSeconds(seconds)}
+            onTick={(seconds) => {
+              timeRef.current = seconds;
+            }}
           />
         );
       }
@@ -35,7 +37,7 @@ export default function Quiz() {
           <QuizEnd
             answers={answers}
             onReset={handleReset}
-            timeString={getTimeString(seconds)}
+            timeString={getTimeString(timeRef.current)}
           />
         );
       }
